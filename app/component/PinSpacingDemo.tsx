@@ -6,7 +6,7 @@ import React, { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-export default function PlaceholderComp() {
+export default function PinSpacingDemo() {
   const container = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
@@ -25,10 +25,11 @@ export default function PlaceholderComp() {
         trigger: container.current,
         animation: tween,
         // markers: true,
-        start: "center center",
-        end: "bottom 30%",
+        start: "800px center",
+        end: "+=300",
         scrub: 1,
         pin: true,
+        pinSpacing: false,
       });
     },
     { scope: container },
@@ -37,9 +38,16 @@ export default function PlaceholderComp() {
   return (
     <div
       ref={container}
-      className="flex flex-col justify-center items-center w-full h-dvh bg-amber-200"
+      className="flex flex-col justify-end items-center w-full h-dvh bg-amber-200"
     >
-      <h3 className="text-4xl font-bold  ">This is a placeholder</h3>
+      <p>
+        Scroll pin-spacer sit on top of the next container/div and with element
+        having the same background as current wrapper it gives an illusion of
+        sticky for scroll-area
+      </p>
+      <h3 className="text-4xl font-bold   bg-amber-200 h-20">
+        Demo of pinSpacing: false
+      </h3>
     </div>
   );
 }

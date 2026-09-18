@@ -1,13 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import PlaceholderComp from "./component/PlaceholderComp";
+import PinSpacingDemo from "./component/PinSpacingDemo";
 import BlankDiv from "./component/BlankDiv";
+import ParallaxDemo from "./component/ParallaxDemo";
 
 export default function Home() {
   return (
     <div>
-      <PlaceholderComp />
+      <PinSpacingDemo />
+      <BlankDiv />
+      <ParallaxDemo />
       <BlankDiv />
     </div>
   );
