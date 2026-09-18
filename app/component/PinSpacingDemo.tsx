@@ -26,7 +26,7 @@ export default function PinSpacingDemo() {
         animation: tween,
         // markers: true,
         start: "800px center",
-        end: "+=300",
+        end: "+=500",
         scrub: 1,
         pin: true,
         pinSpacing: false,
