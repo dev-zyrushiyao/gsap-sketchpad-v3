@@ -17,7 +17,7 @@ const ParallaxDemo = () => {
       const split = SplitText.create(".greeting-text", { type: "chars" });
 
       const tl = gsap.timeline({
-        defaults: { duration: 1, ease: "power1.inOut" },
+        defaults: { duration: 1, ease: "power1" },
       });
       tl.from(".tower-layer-1", {
         transformOrigin: "50% 50%",
@@ -55,10 +55,11 @@ const ParallaxDemo = () => {
       ScrollTrigger.create({
         trigger: container.current,
         animation: tl,
-        markers: true,
-        start: "50% center",
-        end: "+=1200",
-        scrub: 0.3,
+        // markers: true,
+        start: "center center",
+        end: "bottom 0%",
+        scrub: 0.5,
+        // once: true,
         pin: true,
       });
     },
@@ -66,7 +67,7 @@ const ParallaxDemo = () => {
   );
 
   return (
-    <div ref={container} className="w-full h-dvh overflow-hidden opacity-0">
+    <div ref={container} className="w-full lg:h-dvh overflow-hidden opacity-0">
       <svg
         viewBox="0 0 1440 730"
         fill="none"
