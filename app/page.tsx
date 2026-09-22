@@ -6,6 +6,7 @@ import ParallaxDemo from "./component/ParallaxDemo";
 
 import MultiSectionScroll from "./component/MultiSectionScroll";
 import LocomotiveScrollDemo from "./component/LocomotiveScrollDemo";
+import ScrollIntro from "./component/ScrollIntro";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <BlankDiv />
       <MultiSectionScroll />
       <LocomotiveScrollDemo />
+      <ScrollIntro />
     </div>
   );
 }

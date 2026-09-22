@@ -53,7 +53,7 @@ export default function LocomotiveScrollDemo() {
       ScrollTrigger.create({
         trigger: ".heading-wrapper",
         animation: tween,
-        markers: true,
+        // markers: true,
         start: "center center",
         end: "+=500",
         scrub: true,
