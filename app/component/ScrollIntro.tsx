@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { off } from "process";
 import React, { useRef } from "react";
 
 const displayMessage: string[] = [
@@ -25,18 +26,23 @@ export default function ScrollIntro() {
       //bounding rect
       const hero = container.current.querySelector<HTMLDivElement>(".hero");
       const circle = container.current.querySelector<HTMLDivElement>(".circle");
-      if (!circle || !hero) return;
 
+      if (!circle || !hero) return;
       const heroRect = hero.getBoundingClientRect();
       const circleRect = circle.getBoundingClientRect();
 
-      //offset
-      const xOffset = heroRect.width - circleRect.left;
+      function getOffset(): number {
+        //offset
+        const xOffset = heroRect.width - circleRect.left;
+        return xOffset;
+      }
+
+      const offset = getOffset();
 
       //   gsap setters
       gsap.set(circle, {
         opacity: 1,
-        x: -xOffset,
+        x: -offset,
         transformOrigin: "50% 50%",
       });
 
@@ -45,11 +51,22 @@ export default function ScrollIntro() {
 
       // animation circle
       // on complete calls the scroll trigger for to prevent user scrolling while the circle animation is playing.
+
       const circleTl = gsap
-        .timeline({ onComplete: enableScroll })
+        .timeline({
+          //   onComplete: enableScroll,
+          onComplete: () => {
+            if (!container.current) return;
+            const contentWrapper =
+              container.current.querySelector(".content-wrapper");
+
+            gsap.set(contentWrapper, { display: "block" });
+          },
+        })
+
         .to(circle, {
           duration: 2,
-          x: xOffset - 100,
+          x: offset - 100,
           xPercent: 100,
           ease: "power2.inOut",
         })
@@ -104,20 +121,30 @@ export default function ScrollIntro() {
           stagger,
         );
 
-      function enableScroll(): void {
-        //set oveeride the visibility hidden of the content wrapper
-        gsap.set(".content-wrapper", { display: "block" });
+      gsap.set(".content-wrapper", { display: "block" });
+      ScrollTrigger.create({
+        trigger: container.current,
+        animation: messageTl,
+        markers: true,
+        pin: hero,
+        scrub: 1,
+        start: "top top",
+        end: "+=3000",
+      });
 
-        ScrollTrigger.create({
-          trigger: container.current,
-          animation: messageTl,
-          //   markers: true,
-          pin: true,
-          scrub: 2.5,
-          start: "top top",
-          end: "+=3000",
-        });
-      }
+      //   function enableScroll(): void {
+      //     //set overide the visibility hidden of the content wrapper
+      //     //enable this code only when loading this component solo
+      //     ScrollTrigger.create({
+      //       trigger: hero,
+      //       animation: messageTl,
+      //       markers: true,
+      //       pin: hero,
+      //       scrub: 1,
+      //       start: "top top",
+      //       end: "+=3000",
+      //     });
+      //   }
     },
     { scope: container },
   );
