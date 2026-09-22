@@ -45,13 +45,13 @@ export default function MultiSectionScroll() {
 
       banner.forEach((bannerElem) => {
         const bannerHeadings = bannerElem.querySelectorAll("h2 , h5");
-        const bannerImage = bannerElem.querySelectorAll("img");
+        const bannerImage = bannerElem.querySelector("img");
 
         bannerHeadings.forEach((heading, index) => {
           const split = SplitText.create(heading, { type: "chars" });
 
           const tl = gsap
-            .timeline()
+            .timeline({ id: "game-banner" })
             .from(split.chars, {
               y: 200,
               opacity: 0,
@@ -59,16 +59,25 @@ export default function MultiSectionScroll() {
               duration: 2,
               ease: "elastic(1, 0.5)",
             })
-            .from(
-              bannerImage[index],
-              { y: 500, opacity: 0, ease: "power2" },
+            .fromTo(
+              bannerImage,
+              {
+                objectPosition: "50% 0%",
+                filter: "brightness(20%)",
+              },
+              {
+                duration: 1,
+                ease: "power2",
+                objectPosition: "50% 50%",
+                filter: "brightness(50%)",
+              },
               "<",
             );
 
           ScrollTrigger.create({
             trigger: bannerElem,
             animation: tl,
-            markers: true,
+            // markers: true,
             start: "top center",
             end: "bottom 30%",
             toggleActions: "play none none reverse",
@@ -96,7 +105,8 @@ export default function MultiSectionScroll() {
                 <Image
                   src={image.imageData}
                   alt={image.title}
-                  className="w-full h-full object-cover brightness-50"
+                  className="w-full h-full object-cover"
+                  priority={index === 0}
                 />
                 <div className="relative -top-100 text-white font-bold flex flex-col gap-5 p-20">
                   <h2 className="lg:text-7xl md:text-5xl sm:text-3xl">
