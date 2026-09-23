@@ -101,14 +101,14 @@ export default function MultiSectionScroll() {
         {imageItem.map((image, index) => {
           return (
             <div className="game-section" key={index}>
-              <div className="banner h-200 overflow-clip ">
+              <div className="banner h-100 overflow-clip ">
                 <Image
                   src={image.imageData}
                   alt={image.title}
                   className="w-full h-full object-cover"
-                  priority={index === 0}
+             
                 />
-                <div className="relative -top-100 text-white font-bold flex flex-col gap-5 p-20">
+                <div className="relative -top-70 text-white font-bold flex flex-col gap-5 p-20">
                   <h2 className="lg:text-7xl md:text-5xl sm:text-3xl">
                     {image.title}
                   </h2>

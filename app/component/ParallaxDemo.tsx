@@ -14,62 +14,67 @@ const ParallaxDemo = () => {
       const setOpacity = gsap.quickSetter(container.current, "opacity");
       setOpacity(1);
 
-      const split = SplitText.create(".greeting-text", { type: "chars" });
+      const mm = gsap.matchMedia();
 
-      const tl = gsap.timeline({
-        defaults: { duration: 1, ease: "power1" },
-      });
-      tl.from(".tower-layer-1", {
-        transformOrigin: "50% 50%",
-        y: 500,
-      })
-        .from(".tower-layer-2", {
+      mm.add("(min-width: 1024px)", () => {
+        const split = SplitText.create(".greeting-text", { type: "chars" });
+
+        const tl = gsap.timeline({
+          defaults: { duration: 1, ease: "power1" },
+        });
+        tl.from(".tower-layer-1", {
           transformOrigin: "50% 50%",
           y: 500,
         })
-        .from(".stars > *", {
-          transformOrigin: "50% 50%",
-          scale: 0,
-          ease: "back(2)",
-        })
-        .from(split.chars, { opacity: 0, stagger: 0.05 })
-        .from(".moon-layer", {
-          y: -300,
-          x: -500,
-        })
-        .from(
-          ".cloud",
-          {
-            x: -1440,
-          },
-          "<",
-        )
-        .from(
-          ".lights",
-          {
-            opacity: 0,
-          },
-          "-=0.1",
-        );
+          .from(".tower-layer-2", {
+            transformOrigin: "50% 50%",
+            y: 500,
+          })
+          .from(".stars > *", {
+            transformOrigin: "50% 50%",
+            scale: 0,
+            ease: "back(2)",
+          })
+          .from(split.chars, { opacity: 0, stagger: 0.05 })
+          .from(".moon-layer", {
+            y: -300,
+            x: -500,
+          })
+          .from(
+            ".cloud",
+            {
+              x: -1440,
+            },
+            "<",
+          )
+          .from(
+            ".lights",
+            {
+              opacity: 0,
+            },
+            "-=0.1",
+          );
 
-      ScrollTrigger.create({
-        trigger: container.current,
-        animation: tl,
-        // markers: true,
-        start: "center center",
-        end: "bottom 0%",
-        scrub: 0.5,
-        // once: true,
-        pin: true,
+        ScrollTrigger.create({
+          trigger: container.current,
+          animation: tl,
+          // markers: true,
+          start: "center center",
+          end: "+=350%",
+          scrub: 1,
+          pin: true,
+        });
       });
     },
     { scope: container },
   );
 
   return (
-    <div ref={container} className="w-full lg:h-dvh overflow-hidden opacity-0">
+    <div ref={container} className="w-full h-dvh overflow-hidden opacity-0">
       <svg
         viewBox="0 0 1440 730"
+        className="w-full h-full object-cover"
+        preserveAspectRatio="xMidYMid slice"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

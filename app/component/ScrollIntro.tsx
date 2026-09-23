@@ -54,14 +54,16 @@ export default function ScrollIntro() {
 
       const circleTl = gsap
         .timeline({
-          //   onComplete: enableScroll,
           onComplete: () => {
-            if (!container.current) return;
-            const contentWrapper =
-              container.current.querySelector(".content-wrapper");
-
-            gsap.set(contentWrapper, { display: "block" });
+            enableScroll();
           },
+          // onComplete: () => {
+          //   if (!container.current) return;
+          //   const contentWrapper =
+          //     container.current.querySelector(".content-wrapper");
+
+          //   gsap.set(contentWrapper, { display: "block" });
+          // },
         })
 
         .to(circle, {
@@ -93,6 +95,7 @@ export default function ScrollIntro() {
 
       //message tl
       //greeting p fades out its the first text we see before the scrolling start
+
       const stagger = 10;
       const opacity = 0;
       const messageTl = gsap
@@ -121,57 +124,68 @@ export default function ScrollIntro() {
           stagger,
         );
 
-      gsap.set(".content-wrapper", { display: "block" });
-      ScrollTrigger.create({
-        trigger: container.current,
-        animation: messageTl,
-        markers: true,
-        pin: hero,
-        scrub: 1,
-        start: "top top",
-        end: "+=3000",
-      });
+      // const contentWrapper =
+      //   container.current.querySelector(".content-wrapper");
+      // if (!contentWrapper) return;
+      // gsap.set(contentWrapper, { display: "block" });
 
-      //   function enableScroll(): void {
-      //     //set overide the visibility hidden of the content wrapper
-      //     //enable this code only when loading this component solo
-      //     ScrollTrigger.create({
-      //       trigger: hero,
-      //       animation: messageTl,
-      //       markers: true,
-      //       pin: hero,
-      //       scrub: 1,
-      //       start: "top top",
-      //       end: "+=3000",
-      //     });
-      //   }
+      // console.log(contentWrapper);
+
+      if (!container.current) return;
+      const contentWrapper =
+        container.current.querySelector(".content-wrapper");
+
+      function enableScroll(): void {
+        //set overide the visibility hidden of the content wrapper
+
+        gsap.set(contentWrapper, { autoAlpha: 1 });
+
+        ScrollTrigger.update();
+
+        // enable this code only when loading this component solo
+        ScrollTrigger.create({
+          trigger: hero,
+          animation: messageTl,
+          markers: true,
+          pin: true,
+          scrub: 1,
+          start: "top top",
+          end: "+=3000px",
+        });
+      }
     },
     { scope: container },
   );
 
   return (
-    <div ref={container}>
-      <div className="hero bg-gray-300 h-dvh w-full flex justify-center items-center overflow-clip relative">
-        <div className="circle bg-green-500 h-20 w-20 rounded-full opacity-0 absolute"></div>
-        <div className="greeting opacity-0 flex flex-col gap-4 absolute">
+    <div ref={container} className="h-fit">
+      {/* <div className="hero bg-gray-300 h-screen  relative overflow-hidden">
+        <div className="circle bg-green-500 top-1/2 h-20 w-20 rounded-full opacity-0 absolute"></div>
+        <div className="greeting opacity-0 gap-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
           <p className="greet-1 text-5xl font-bold">Hello</p>
           <p className="greet-2 text-5xl font-bold">Welcome to GSAP</p>
         </div>
         <div className="message-wrapper text-5xl opacity-0">
           {displayMessage.map((message, index) => {
             return (
-              <p key={index} className="absolute -translate-1/2">
+              <p
+                key={index}
+                className="absolute  top-1/2 left-1/2  -translate-1/2"
+              >
                 {message}
               </p>
             );
           })}
         </div>
-      </div>
-      <div className="content-wrapper w-full h-dvh p-20 hidden">
+      </div> */}
+      <div className="content-wrapper w-full h-fit p-20  ">
         <div className="content flex flex-col gap-10 ">
           <h3 className="text-6xl font-bold">
             Demo of Scroll Trigger as Intro Animation
             <br /> (play this component as solo on page.tsx)
+            <br />
+            [removed the animation because its being buggy on scroll - it needs
+            to be on top component in order to work]
           </h3>
           {Array.from({ length: 5 }, (_, index) => {
             return (
