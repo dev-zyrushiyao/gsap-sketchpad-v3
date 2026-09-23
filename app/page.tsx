@@ -12,6 +12,7 @@ import { useRef } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import gsap from "gsap";
 import SectionDemo from "./component/SectionDemo";
+import ColorNav from "./component/ColorNav";
 
 export default function Home() {
   const container = useRef<HTMLDivElement>(null);
@@ -48,7 +49,7 @@ export default function Home() {
       <BlankDiv />
       <SectionDemo />
       <BlankDiv />
-      <BlankDiv />
+      <ColorNav />
     </div>
   );
 }
