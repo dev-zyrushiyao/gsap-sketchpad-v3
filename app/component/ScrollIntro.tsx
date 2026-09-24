@@ -140,8 +140,6 @@ export default function ScrollIntro() {
 
         gsap.set(contentWrapper, { autoAlpha: 1 });
 
-        ScrollTrigger.update();
-
         // enable this code only when loading this component solo
         ScrollTrigger.create({
           trigger: hero,
@@ -152,6 +150,8 @@ export default function ScrollIntro() {
           start: "top top",
           end: "+=3000px",
         });
+
+        ScrollTrigger.refresh();
       }
     },
     { scope: container },
@@ -159,12 +159,12 @@ export default function ScrollIntro() {
 
   return (
     <div ref={container} className="h-fit">
-      {/* <div className="hero bg-gray-300 h-screen  relative overflow-hidden">
-        <div className="circle bg-green-500 top-1/2 h-20 w-20 rounded-full opacity-0 absolute"></div>
+      <div className="hero bg-gray-300 h-screen  relative overflow-hidden">
+        {/* <div className="circle bg-green-500 top-1/2 h-20 w-20 rounded-full opacity-0 absolute"></div>
         <div className="greeting opacity-0 gap-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
           <p className="greet-1 text-5xl font-bold">Hello</p>
           <p className="greet-2 text-5xl font-bold">Welcome to GSAP</p>
-        </div>
+        </div> */}
         <div className="message-wrapper text-5xl opacity-0">
           {displayMessage.map((message, index) => {
             return (
@@ -177,7 +177,7 @@ export default function ScrollIntro() {
             );
           })}
         </div>
-      </div> */}
+      </div>
       <div className="content-wrapper w-full h-fit p-20  ">
         <div className="content flex flex-col gap-10 ">
           <h3 className="text-6xl font-bold">
