@@ -13,11 +13,11 @@ const sectionBgColor: string[] = [
 ];
 
 const navColor: string[] = [
-  "#e0f2fe", // Light skyblue (Tailwind sky-100)
-  "#dcfce7", // Light green (Tailwind green-100)
-  "#FFB6A0", // Light salmon (Misty Rose / Soft Salmon Pink)
-  "#f3e8ff", // Light violet (Tailwind purple-100)
-  "#fce7f3", // Light pink (Tailwind pink-100)
+  "#bae6fd", // Slightly darker skyblue (Tailwind sky-200)
+  "#bbf7d0", // Slightly darker green (Tailwind green-200)
+  "#ff9e85", // Slightly darker soft salmon pink
+  "#e9d5ff", // Slightly darker violet (Tailwind purple-200)
+  "#f472b6", // Medium pink (Tailwind pink-400)
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -39,32 +39,30 @@ export default function ColorNav() {
       const navElem = container.current.querySelector("nav");
       if (!navElem) return;
 
-      function getNavHeight() {
-        return navElem?.getBoundingClientRect().height || 0;
-      }
+      let navHeight: number = navElem.offsetHeight;
 
       //on each loop create a dedicated scroll trigger to each section
       navItems.forEach((item, index) => {
         ScrollTrigger.create({
           trigger: fullScreenDiv[index],
           animation: gsap.to(navElem, { backgroundColor: navColor[index] }),
-          start: () => `top ${getNavHeight()}px`,
-          end: () => `bottom ${getNavHeight()}px`,
+          start: () => `top ${navHeight}px`,
+          end: () => `bottom ${navHeight}px`,
           markers: true,
           toggleActions: "restart none none reverse",
           immediateRender: false,
         });
       });
 
-      // Initial refresh
-      ScrollTrigger.refresh();
-
+      ScrollTrigger.addEventListener("refreshInit", () => {
+        navHeight = navElem.offsetHeight;
+      });
     },
     { scope: container },
   );
   return (
     <div ref={container}>
-      <nav className="nav-wrapper bg-blue-200 flex lg:flex-row flex-col justify-center items-center p-10 gap-20 sticky top-0">
+      <nav className="nav-wrapper bg-amber-200 flex lg:flex-row flex-col justify-center items-center p-10 gap-20 sticky top-0">
         {navItems.map((item, index) => {
           return (
             <div key={index} className="text-2xl">

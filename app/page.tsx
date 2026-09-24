@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <div ref={container}>
-      <PinSpacingDemo />
+      {/* <PinSpacingDemo />
       <BlankDiv />
       <ParallaxDemo />
       <BlankDiv />
@@ -48,7 +48,7 @@ export default function Home() {
       <ScrollIntro />
       <BlankDiv />
       <SectionDemo />
-      <BlankDiv />
+      <BlankDiv /> */}
       <ColorNav />
     </div>
   );
