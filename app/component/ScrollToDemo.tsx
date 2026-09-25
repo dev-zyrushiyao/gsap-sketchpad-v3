@@ -41,9 +41,10 @@ export default function ScrollToDemo() {
         trigger: ".monster-category",
         animation: monsterTl,
         start: "top top",
-        scrub: true,
+        end: "+=300",
+        scrub: 1,
         pin: true,
-        // markers: true,
+        markers: true,
       });
 
       const navWrapper =

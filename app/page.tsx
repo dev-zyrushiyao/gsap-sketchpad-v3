@@ -16,6 +16,7 @@ import ColorNav from "./component/ColorNav";
 import ProgressBarDemo from "./component/ProgressBarDemo";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollToDemo from "./component/ScrollToDemo";
+import ScrollLabel from "./component/ScrolNavlLabel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,10 +56,11 @@ export default function Home() {
       {/* <ScrollIntro /> */}
       {/* <BlankDiv /> */}
       {/* <SectionDemo /> */}
-      {/* <BlankDiv /> */}
-      {/* <ColorNav /> */}
-      {/* <ProgressBarDemo /> */}
+      <BlankDiv />
+      <ColorNav />
+      <ProgressBarDemo />
       <ScrollToDemo />
+      <ScrollLabel />
     </div>
   );
 }
