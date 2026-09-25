@@ -4,7 +4,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
 
-const navItems: string[] = ["Home", "Animation", "Github", "About"];
+const navItems: string[] = ["Products", "Animation", "Github", "Blogs"];
 const sectionColor: string[] = ["#87CEEB", "#90EE90", "#FFB6C1", "#DDA0DD"];
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -58,6 +58,7 @@ export default function ScrollNavLabel() {
           end: "bottom center",
           markers: true,
           toggleClass: "active",
+          fastScrollEnd: true,
           onToggle: (self) => {
             if (self.isActive) {
               gsap.to(`li:nth-child(${index + 1})`, {

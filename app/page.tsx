@@ -57,9 +57,9 @@ export default function Home() {
       {/* <BlankDiv /> */}
       {/* <SectionDemo /> */}
       <BlankDiv />
-      <ColorNav />
-      <ProgressBarDemo />
-      <ScrollToDemo />
+      {/* <ColorNav /> */}
+      {/* <ProgressBarDemo /> */}
+      {/* <ScrollToDemo /> */}
       <ScrollLabel />
     </div>
   );
