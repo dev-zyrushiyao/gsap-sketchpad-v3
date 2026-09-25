@@ -51,19 +51,11 @@ export default function ScrollIntro() {
 
       // animation circle
       // on complete calls the scroll trigger for to prevent user scrolling while the circle animation is playing.
-
       const circleTl = gsap
         .timeline({
           onComplete: () => {
             enableScroll();
           },
-          // onComplete: () => {
-          //   if (!container.current) return;
-          //   const contentWrapper =
-          //     container.current.querySelector(".content-wrapper");
-
-          //   gsap.set(contentWrapper, { display: "block" });
-          // },
         })
 
         .to(circle, {
@@ -95,7 +87,6 @@ export default function ScrollIntro() {
 
       //message tl
       //greeting p fades out its the first text we see before the scrolling start
-
       const stagger = 10;
       const opacity = 0;
       const messageTl = gsap
@@ -124,34 +115,25 @@ export default function ScrollIntro() {
           stagger,
         );
 
-      // const contentWrapper =
-      //   container.current.querySelector(".content-wrapper");
-      // if (!contentWrapper) return;
-      // gsap.set(contentWrapper, { display: "block" });
-
-      // console.log(contentWrapper);
-
       if (!container.current) return;
       const contentWrapper =
         container.current.querySelector(".content-wrapper");
 
       function enableScroll(): void {
         //set overide the visibility hidden of the content wrapper
+        // contentWrapper?.classList.remove("invicible");
+        // gsap.set(contentWrapper, { autoAlpha: 1 });
+        gsap.set(contentWrapper, { display: "block" });
 
-        gsap.set(contentWrapper, { autoAlpha: 1 });
-
-        // enable this code only when loading this component solo
         ScrollTrigger.create({
           trigger: hero,
           animation: messageTl,
-          markers: true,
+          // markers: true,
           pin: true,
           scrub: 1,
           start: "top top",
           end: "+=3000px",
         });
-
-        ScrollTrigger.refresh();
       }
     },
     { scope: container },
@@ -159,12 +141,12 @@ export default function ScrollIntro() {
 
   return (
     <div ref={container} className="h-fit">
-      <div className="hero bg-gray-300 h-screen  relative overflow-hidden">
-        {/* <div className="circle bg-green-500 top-1/2 h-20 w-20 rounded-full opacity-0 absolute"></div>
+      <div className="hero bg-gray-300 h-dvh relative overflow-hidden">
+        <div className="circle bg-green-500 top-1/2 h-20 w-20 rounded-full opacity-0 absolute"></div>
         <div className="greeting opacity-0 gap-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
           <p className="greet-1 text-5xl font-bold">Hello</p>
           <p className="greet-2 text-5xl font-bold">Welcome to GSAP</p>
-        </div> */}
+        </div>
         <div className="message-wrapper text-5xl opacity-0">
           {displayMessage.map((message, index) => {
             return (
@@ -178,7 +160,7 @@ export default function ScrollIntro() {
           })}
         </div>
       </div>
-      <div className="content-wrapper w-full h-fit p-20  ">
+      <div className="content-wrapper w-full h-fit p-20 invisible">
         <div className="content flex flex-col gap-10 ">
           <h3 className="text-6xl font-bold">
             Demo of Scroll Trigger as Intro Animation

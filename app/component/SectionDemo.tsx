@@ -10,20 +10,20 @@ export default function SectionDemo() {
 
   useGSAP(
     () => {
-      // const messageTl = gsap
-      //   .timeline()
-      //   .set(".message", { autoAlpha: 0 })
-      //   .from(".message", { duration: 1, autoAlpha: 1, y: 200, ease: "back" });
-      // ScrollTrigger.create({
-      //   trigger: container.current,
-      //   animation: messageTl,
-      //   start: "75% bottom",
-      //   // end: "bottom bottom",
-      //   // markers: true,
-      //   toggleActions: "play none none reverse",
-      //   toggleClass: { targets: ".message", className: "active" },
-      //   // fastScrollEnd: true,
-      // });
+      const messageTl = gsap
+        .timeline()
+        .set(".message", { autoAlpha: 0 })
+        .from(".message", { duration: 1, autoAlpha: 1, y: 200, ease: "back" });
+      ScrollTrigger.create({
+        trigger: container.current,
+        animation: messageTl,
+        start: "75% bottom",
+        // end: "bottom bottom",
+        // markers: true,
+        toggleActions: "play none none reverse",
+        toggleClass: { targets: ".message", className: "active" },
+        // fastScrollEnd: true,
+      });
     },
     { scope: container },
   );

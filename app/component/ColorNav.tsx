@@ -38,17 +38,20 @@ export default function ColorNav() {
       //get the nav height
       const navElem = container.current.querySelector("nav");
       if (!navElem) return;
+      const setOpacity = gsap.quickSetter(navElem, "opacity");
+      setOpacity(1);
 
       let navHeight: number = navElem.offsetHeight;
 
       //on each loop create a dedicated scroll trigger to each section
       navItems.forEach((item, index) => {
         ScrollTrigger.create({
+          id: "Color Nav",
           trigger: fullScreenDiv[index],
           animation: gsap.to(navElem, { backgroundColor: navColor[index] }),
           start: () => `top ${navHeight}px`,
           end: () => `bottom ${navHeight}px`,
-          // markers: true,
+          markers: true,
           toggleActions: "restart none none reverse",
           immediateRender: false,
         });
@@ -62,8 +65,8 @@ export default function ColorNav() {
   );
   return (
     <div ref={container}>
-      {/* <nav className="nav-wrapper bg-amber-200 flex lg:flex-row flex-col justify-center items-center p-10 gap-20 sticky top-0"> */}
-      <nav className="nav-wrapper bg-amber-200 flex lg:flex-row flex-col justify-center items-center p-10 gap-20  top-0">
+      <nav className="nav-wrapper bg-amber-200 flex lg:flex-row flex-col justify-center items-center p-10 gap-20 sticky top-0 opacity-0">
+        {/* <nav className="nav-wrapper bg-amber-200 flex lg:flex-row flex-col justify-center items-center p-10 gap-20  top-0"> */}
         ColorNav Demo
         {navItems.map((item, index) => {
           return (

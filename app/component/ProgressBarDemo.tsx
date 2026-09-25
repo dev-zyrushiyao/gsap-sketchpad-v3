@@ -50,13 +50,14 @@ export default function ProgressBarDemo() {
       //if you use onupdate to trigger the progress remove the animation object property to avoid conflict triggering the native scrollTrigger
       //set once object to kill the scrollTrigger after it is done animating
       ScrollTrigger.create({
+        id:"Progress Bar Demo",
         trigger: contentWrapper,
         endTrigger: contentParagraph,
         // animation: progressBarTween,
         start: `top ${banner.offsetHeight / 2}`,
         end: `bottom bottom`,
         once: true,
-        markers: true,
+        // markers: true,
         onLeave: () => {
           progressWrapper?.classList.remove("fixed");
         },

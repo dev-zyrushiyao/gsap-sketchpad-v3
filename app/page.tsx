@@ -15,6 +15,7 @@ import SectionDemo from "./component/SectionDemo";
 import ColorNav from "./component/ColorNav";
 import ProgressBarDemo from "./component/ProgressBarDemo";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollToDemo from "./component/ScrollToDemo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,7 +38,7 @@ export default function Home() {
           gsap.ticker.remove(render);
         },
       });
-      // // Recalculate ScrollTrigger after Locomotive has initialized
+      // Recalculate ScrollTrigger after Locomotive has initialized
       // ScrollTrigger.update();
     },
     { scope: container },
@@ -50,13 +51,14 @@ export default function Home() {
       <ParallaxDemo />
       <BlankDiv />
       <MultiSectionScroll />
-      <LocomotiveScrollDemo />
-      <ScrollIntro />
-      <BlankDiv />
-      <SectionDemo />
-      <BlankDiv />
-      <ColorNav /> */}
-      <ProgressBarDemo />
+      <LocomotiveScrollDemo /> */}
+      {/* <ScrollIntro /> */}
+      {/* <BlankDiv /> */}
+      {/* <SectionDemo /> */}
+      {/* <BlankDiv /> */}
+      {/* <ColorNav /> */}
+      {/* <ProgressBarDemo /> */}
+      <ScrollToDemo />
     </div>
   );
 }
