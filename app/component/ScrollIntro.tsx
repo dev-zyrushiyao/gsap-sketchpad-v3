@@ -120,20 +120,19 @@ export default function ScrollIntro() {
         container.current.querySelector(".content-wrapper");
 
       function enableScroll(): void {
-        //set overide the visibility hidden of the content wrapper
-        // contentWrapper?.classList.remove("invicible");
-        // gsap.set(contentWrapper, { autoAlpha: 1 });
-        gsap.set(contentWrapper, { display: "block" });
-
         ScrollTrigger.create({
           trigger: hero,
           animation: messageTl,
-          // markers: true,
+          markers: true,
           pin: true,
           scrub: 1,
           start: "top top",
-          end: "+=3000px",
+          // end: "+=3000px",
         });
+
+        ScrollTrigger.refresh()
+
+        gsap.set(contentWrapper, { autoAlpha: 1 });
       }
     },
     { scope: container },

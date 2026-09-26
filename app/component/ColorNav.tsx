@@ -51,7 +51,7 @@ export default function ColorNav() {
           animation: gsap.to(navElem, { backgroundColor: navColor[index] }),
           start: () => `top ${navHeight}px`,
           end: () => `bottom ${navHeight}px`,
-          // markers: true,
+          markers: true,
           toggleActions: "restart none none reverse",
           immediateRender: false,
         });
@@ -60,6 +60,8 @@ export default function ColorNav() {
       ScrollTrigger.addEventListener("refreshInit", () => {
         navHeight = navElem.offsetHeight;
       });
+
+      ScrollTrigger.refresh();
     },
     { scope: container },
   );

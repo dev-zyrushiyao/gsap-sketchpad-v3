@@ -17,6 +17,7 @@ import ProgressBarDemo from "./component/ProgressBarDemo";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollToDemo from "./component/ScrollToDemo";
 import ScrollLabel from "./component/ScrolNavlLabel";
+import SplitTextScroll from "./component/SplitTextScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,21 +25,21 @@ export default function Home() {
   const container = useRef<HTMLDivElement>(null);
   useGSAP(
     () => {
-      const locomotiveScroll = new LocomotiveScroll({
-        lenisOptions: {
-          wrapper: window, // The browser window itself
-          content: document.documentElement, // The entire page HTML
-          lerp: 0.08,
-          duration: 2,
-          smoothWheel: true,
-        },
-        initCustomTicker: (render) => {
-          gsap.ticker.add(render);
-        },
-        destroyCustomTicker: (render) => {
-          gsap.ticker.remove(render);
-        },
-      });
+      // const locomotiveScroll = new LocomotiveScroll({
+      //   lenisOptions: {
+      //     wrapper: window, // The browser window itself
+      //     content: document.documentElement, // The entire page HTML
+      //     lerp: 0.08,
+      //     duration: 2,
+      //     smoothWheel: true,
+      //   },
+      //   initCustomTicker: (render) => {
+      //     gsap.ticker.add(render);
+      //   },
+      //   destroyCustomTicker: (render) => {
+      //     gsap.ticker.remove(render);
+      //   },
+      // });
       // Recalculate ScrollTrigger after Locomotive has initialized
       // ScrollTrigger.update();
     },
@@ -51,16 +52,18 @@ export default function Home() {
       <BlankDiv />
       <ParallaxDemo />
       <BlankDiv />
-      <MultiSectionScroll />
-      <LocomotiveScrollDemo /> */}
+      <MultiSectionScroll />*/}
+      {/* <LocomotiveScrollDemo />?? */}
       {/* <ScrollIntro /> */}
       {/* <BlankDiv /> */}
       {/* <SectionDemo /> */}
-      <BlankDiv />
+      {/* <BlankDiv /> */}
       {/* <ColorNav /> */}
       {/* <ProgressBarDemo /> */}
       {/* <ScrollToDemo /> */}
-      <ScrollLabel />
+      {/* <ScrollLabel /> */}
+      <BlankDiv />
+      <SplitTextScroll />
     </div>
   );
 }
