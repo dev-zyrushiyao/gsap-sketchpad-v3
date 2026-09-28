@@ -87,7 +87,8 @@ export default function SplitTextScroll() {
   return (
     <div ref={container}>
       <div className="h-20 w-full bg-amber-300 flex flex-col justify-center items-center text-5xl font-bold p-20">
-        SplitTextScrollDemo
+        SplitTextScrollDemo using debounce method to properly make the splitting
+        responsive
       </div>
       <div className=" bg-gray-500 overflow-clip">
         {Array.from({ length: 5 }, (_, index) => {

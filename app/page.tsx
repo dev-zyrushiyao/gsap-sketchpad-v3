@@ -18,6 +18,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollToDemo from "./component/ScrollToDemo";
 import ScrollLabel from "./component/ScrolNavlLabel";
 import SplitTextScroll from "./component/SplitTextScroll";
+import OffScreenResetDemo from "./component/OffScreenResetDemo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,6 +65,8 @@ export default function Home() {
       {/* <ScrollLabel /> */}
       <BlankDiv />
       <SplitTextScroll />
+      <BlankDiv />
+      <OffScreenResetDemo />
     </div>
   );
 }
