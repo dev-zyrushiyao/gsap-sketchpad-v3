@@ -19,6 +19,8 @@ import ScrollToDemo from "./component/ScrollToDemo";
 import ScrollLabel from "./component/ScrolNavlLabel";
 import SplitTextScroll from "./component/SplitTextScroll";
 import OffScreenResetDemo from "./component/OffScreenResetDemo";
+import SpinningCube from "./component/SpinningCube";
+import MultiSpinningCube from "./component/MultiSpinningCube";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,10 +65,13 @@ export default function Home() {
       {/* <ProgressBarDemo /> */}
       {/* <ScrollToDemo /> */}
       {/* <ScrollLabel /> */}
-      <BlankDiv />
+      {/* <BlankDiv />
       <SplitTextScroll />
       <BlankDiv />
       <OffScreenResetDemo />
+      <BlankDiv /> */}
+      {/* <SpinningCube /> */}
+      <MultiSpinningCube />
     </div>
   );
 }
