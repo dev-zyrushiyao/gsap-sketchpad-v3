@@ -21,20 +21,6 @@ export default function MultiSpinningCube() {
         container.current?.querySelectorAll(".cube-container");
       if (!cubeContainer) return;
 
-      gsap.set(cubeContainer, {
-        width: cubeWidth,
-        height: cubeHeight,
-        opacity: 1,
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transformStyle: "preserve-3d",
-        transformOrigin: `50% 50% -${cubeHeight / 2}px`,
-        xPercent: -50,
-        yPercent: -50,
-        rotateX: -90,
-      });
-
       cubeContainer.forEach((cubeCont) => {
         console.log(cubeCont);
         gsap.set(cubeCont, {
@@ -48,7 +34,7 @@ export default function MultiSpinningCube() {
           transformOrigin: `50% 50% -${cubeHeight / 2}px`,
           xPercent: -50,
           yPercent: -50,
-          rotateX: -90,
+          rotateX: -90, //start position of array 0
         });
 
         const cubes = cubeCont.querySelectorAll(".cube");
@@ -78,6 +64,7 @@ export default function MultiSpinningCube() {
       });
 
       const cubeWrapper = gsap.utils.toArray<HTMLDivElement>(".cube-wrapper");
+      gsap.set(cubeWrapper, { height: cubeHeight });
 
       cubeWrapper.forEach((wrapper, index) => {
         const cubeTween = gsap.to(cubeContainer[index], {
@@ -108,7 +95,7 @@ export default function MultiSpinningCube() {
           onLeave: () => {
             cubeTween.reverse();
           },
-          markers: true,
+          // markers: true,
         });
       });
     },
@@ -157,10 +144,8 @@ export default function MultiSpinningCube() {
         {sectionTitle.map((title) => {
           return (
             <section key={title}>
-              <div
-                className={`cube-wrapper h-[${cubeHeight}] w-full flex flex-col justify-center relative`}
-              >
-                <div className="cube-container opacity-1">
+              <div className="cube-wrapper w-full flex flex-col justify-center relative">
+                <div className="cube-container opacity-0">
                   {Array.from({ length: 2 }, (_, index) => {
                     return (
                       <div

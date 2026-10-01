@@ -21,6 +21,7 @@ import SplitTextScroll from "./component/SplitTextScroll";
 import OffScreenResetDemo from "./component/OffScreenResetDemo";
 import SpinningCube from "./component/SpinningCube";
 import MultiSpinningCube from "./component/MultiSpinningCube";
+import LineSectionProggress from "./component/LineSectionProggress";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,7 +72,9 @@ export default function Home() {
       <OffScreenResetDemo />
       <BlankDiv /> */}
       {/* <SpinningCube /> */}
-      <MultiSpinningCube />
+      {/* <MultiSpinningCube />
+      <BlankDiv /> */}
+      <LineSectionProggress />
     </div>
   );
 }
