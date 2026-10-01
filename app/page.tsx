@@ -22,6 +22,9 @@ import OffScreenResetDemo from "./component/OffScreenResetDemo";
 import SpinningCube from "./component/SpinningCube";
 import MultiSpinningCube from "./component/MultiSpinningCube";
 import LineSectionProggress from "./component/LineSectionProggress";
+import HorizontalScrollDemo from "./component/HorizontalScrollDemo";
+import LayeredPinning from "./component/LayeredPinning";
+import LayeredPinningReverse from "./component/LayeredPinReverse";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,15 +69,18 @@ export default function Home() {
       {/* <ProgressBarDemo /> */}
       {/* <ScrollToDemo /> */}
       {/* <ScrollLabel /> */}
-      {/* <BlankDiv />
-      <SplitTextScroll />
-      <BlankDiv />
-      <OffScreenResetDemo />
-      <BlankDiv /> */}
+      {/* <BlankDiv /> */}
+      {/* <SplitTextScroll /> */}
+      {/* <BlankDiv /> */}
+      {/* <OffScreenResetDemo /> */}
+      {/* <BlankDiv /> */}
       {/* <SpinningCube /> */}
-      {/* <MultiSpinningCube />
-      <BlankDiv /> */}
-      <LineSectionProggress />
+      {/* <MultiSpinningCube /> */}
+      {/* <BlankDiv /> */}
+      {/* <LineSectionProggress /> */}
+      {/* <HorizontalScrollDemo /> */}
+      {/* <LayeredPinning /> */}
+      <LayeredPinningReverse />
     </div>
   );
 }

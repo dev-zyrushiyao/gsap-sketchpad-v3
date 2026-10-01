@@ -54,9 +54,9 @@ export default function ScrollNavLabel() {
         ScrollTrigger.create({
           id: `section-${index}`,
           trigger: element,
-          start: "top center",
-          end: "bottom center",
-          markers: true,
+          start: "top top",
+          // end: "bottom ",
+          // markers: true,
           toggleClass: "active",
           fastScrollEnd: true,
           onToggle: (self) => {

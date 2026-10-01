@@ -44,7 +44,7 @@ export default function ScrollToDemo() {
         end: "+=300",
         scrub: 1,
         pin: true,
-        markers: true,
+        // markers: true,
       });
 
       const navWrapper =
@@ -75,7 +75,7 @@ export default function ScrollToDemo() {
         });
       });
 
-      console.log(navWrapper);
+      // console.log(navWrapper);
     },
     { scope: container },
   );
