@@ -25,6 +25,7 @@ import LineSectionProggress from "./component/LineSectionProggress";
 import HorizontalScrollDemo from "./component/HorizontalScrollDemo";
 import LayeredPinning from "./component/LayeredPinning";
 import LayeredPinningReverse from "./component/LayeredPinReverse";
+import OceanSVGScrollDemo from "./component/OceanSVGScrollDemo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,7 +81,8 @@ export default function Home() {
       {/* <LineSectionProggress /> */}
       {/* <HorizontalScrollDemo /> */}
       {/* <LayeredPinning /> */}
-      <LayeredPinningReverse />
+      {/* <LayeredPinningReverse /> */}
+      <OceanSVGScrollDemo />
     </div>
   );
 }
