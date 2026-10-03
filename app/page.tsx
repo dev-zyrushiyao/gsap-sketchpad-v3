@@ -26,6 +26,7 @@ import HorizontalScrollDemo from "./component/HorizontalScrollDemo";
 import LayeredPinning from "./component/LayeredPinning";
 import LayeredPinningReverse from "./component/LayeredPinReverse";
 import OceanSVGScrollDemo from "./component/OceanSVGScrollDemo";
+import VideoScroll from "./component/VideoScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,7 +83,8 @@ export default function Home() {
       {/* <HorizontalScrollDemo /> */}
       {/* <LayeredPinning /> */}
       {/* <LayeredPinningReverse /> */}
-      <OceanSVGScrollDemo />
+      {/* <OceanSVGScrollDemo /> */}
+      <VideoScroll />
     </div>
   );
 }
