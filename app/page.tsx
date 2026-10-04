@@ -27,6 +27,8 @@ import LayeredPinning from "./component/LayeredPinning";
 import LayeredPinningReverse from "./component/LayeredPinReverse";
 import OceanSVGScrollDemo from "./component/OceanSVGScrollDemo";
 import VideoScroll from "./component/VideoScroll";
+import BallSVGScroll from "./component/BallSVGScroll";
+import ResponsiveScroll from "./component/ResponsiveScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,23 +36,23 @@ export default function Home() {
   const container = useRef<HTMLDivElement>(null);
   useGSAP(
     () => {
-      // const locomotiveScroll = new LocomotiveScroll({
-      //   lenisOptions: {
-      //     wrapper: window, // The browser window itself
-      //     content: document.documentElement, // The entire page HTML
-      //     lerp: 0.08,
-      //     duration: 2,
-      //     smoothWheel: true,
-      //   },
-      //   initCustomTicker: (render) => {
-      //     gsap.ticker.add(render);
-      //   },
-      //   destroyCustomTicker: (render) => {
-      //     gsap.ticker.remove(render);
-      //   },
-      // });
+      const locomotiveScroll = new LocomotiveScroll({
+        lenisOptions: {
+          wrapper: window, // The browser window itself
+          content: document.documentElement, // The entire page HTML
+          lerp: 0.08,
+          duration: 2,
+          smoothWheel: true,
+        },
+        initCustomTicker: (render) => {
+          gsap.ticker.add(render);
+        },
+        destroyCustomTicker: (render) => {
+          gsap.ticker.remove(render);
+        },
+      });
       // Recalculate ScrollTrigger after Locomotive has initialized
-      // ScrollTrigger.update();
+      ScrollTrigger.update();
     },
     { scope: container },
   );
@@ -84,7 +86,9 @@ export default function Home() {
       {/* <LayeredPinning /> */}
       {/* <LayeredPinningReverse /> */}
       {/* <OceanSVGScrollDemo /> */}
-      <VideoScroll />
+      {/* <VideoScroll /> */}
+      {/* <BallSVGScroll /> */}
+      <ResponsiveScroll />
     </div>
   );
 }
