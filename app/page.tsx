@@ -29,6 +29,7 @@ import OceanSVGScrollDemo from "./component/OceanSVGScrollDemo";
 import VideoScroll from "./component/VideoScroll";
 import BallSVGScroll from "./component/BallSVGScroll";
 import ResponsiveScroll from "./component/ResponsiveScroll";
+import SplitScreenPinningDemo from "./component/SplitScreenPinningDemo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,7 +89,8 @@ export default function Home() {
       {/* <OceanSVGScrollDemo /> */}
       {/* <VideoScroll /> */}
       {/* <BallSVGScroll /> */}
-      <ResponsiveScroll />
+      {/* <ResponsiveScroll /> */}
+      <SplitScreenPinningDemo />
     </div>
   );
 }
