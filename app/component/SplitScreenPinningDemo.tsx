@@ -62,14 +62,15 @@ export default function SplitScreenPinningDemo() {
         //photo position set
         gsap.set(photoTargets, { yPercent: 100 });
 
-        // photo animation
-        const photoTween: gsap.core.Tween = gsap.to(photoTargets, {
-          paused: true,
-          yPercent: 0,
-          ease: "none",
-          stagger: 0.5,
-          immediateRender: false,
-        });
+        // photo animation - use this only when the left content is matched with the right content (center)
+        //if one of the left content has long paragraph animate the photoTargets index indivudually with ScrollTrigger
+        // const photoTween: gsap.core.Tween = gsap.to(photoTargets, {
+        //   paused: true,
+        //   yPercent: 0,
+        //   ease: "none",
+        //   stagger: 0.5,
+        //   immediateRender: false,
+        // });
 
         //removed the photoTween animation, this scrollTrigger is only to pin the .right-wrapper class
         ScrollTrigger.create({
