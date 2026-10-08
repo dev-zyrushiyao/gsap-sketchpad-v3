@@ -16,7 +16,7 @@ const PhotoData: PhotoInfo[] = [
     ],
   },
   {
-    title: "Blue",
+    title: "Green",
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil voluptas quis libero natus praesentium maxime sunt, labore laborum ad minus iusto ab expedita quae mollitia. Esse atque magni error aspernatur.Ab perferendis ad earum fugiat eveniet ea eligendi recusandae quia, nihil voluptatibus obcaecati libero aut iste debitis voluptates quos odio excepturi aperiam dolor doloremque dolorum totam laudantium repellat accusantium? Quisquam?",
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores inventore beatae libero, vitae impedit maxime quis molestiae repellendus consequatur voluptate a voluptates voluptatum numquam ea est. Ipsa id esse totam.",
@@ -29,7 +29,7 @@ const PhotoData: PhotoInfo[] = [
     ],
   },
   {
-    title: "Green",
+    title: "Blue",
     description: [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil voluptas quis libero natus praesentium maxime sunt, labore laborum ad minus iusto ab expedita quae mollitia. Esse atque magni error aspernatur.Ab perferendis ad earum fugiat eveniet ea eligendi recusandae quia, nihil voluptatibus obcaecati libero aut iste debitis voluptates quos odio excepturi aperiam dolor doloremque dolorum totam laudantium repellat accusantium? Quisquam?",
     ],
