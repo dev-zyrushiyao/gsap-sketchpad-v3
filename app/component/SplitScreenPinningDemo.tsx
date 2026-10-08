@@ -64,6 +64,7 @@ export default function SplitScreenPinningDemo() {
 
         // photo animation - use this only when the left content is matched with the right content (center)
         //if one of the left content has long paragraph animate the photoTargets index indivudually with ScrollTrigger
+        //see the code below
         // const photoTween: gsap.core.Tween = gsap.to(photoTargets, {
         //   paused: true,
         //   yPercent: 0,
