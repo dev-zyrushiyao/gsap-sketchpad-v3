@@ -2,8 +2,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
+import MonacoTrack from "./svg/MonacoTrack";
+import AustriaTrack from "./svg/AustriaTrack";
+import HungaryTrack from "./svg/HungaryTrack";
+import NetherlandsTrack from "./svg/Netherlands";
+import JapanTrack from "./svg/JapanTrack";
+import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 
-const races: string[] = [
+const racesName: string[] = [
   "Monaco",
   "Austria",
   "Hungary",
@@ -11,13 +17,26 @@ const races: string[] = [
   "Japan",
 ];
 
-gsap.registerPlugin(ScrollTrigger);
+const mapTrack = [
+  MonacoTrack,
+  AustriaTrack,
+  HungaryTrack,
+  NetherlandsTrack,
+  JapanTrack,
+];
+
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
 export default function HorizontalScrollPinDemo() {
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
+      if (racesName.length !== mapTrack.length) {
+        console.log("the Length is not equal");
+        return;
+      }
+
       const races = container.current?.querySelector<HTMLDivElement>(".races");
       if (!races) return;
 
@@ -53,7 +72,7 @@ export default function HorizontalScrollPinDemo() {
         // end: () => `+=${getAmountToScroll()}`,
         invalidateOnRefresh: true,
         pin: true,
-        scrub: 1,
+        scrub: 0.5,
         markers: true,
       });
 
@@ -61,18 +80,82 @@ export default function HorizontalScrollPinDemo() {
       const racesContainer =
         races.querySelectorAll<HTMLDivElement>(".races-container");
 
-      //maps
-      const raceTrack = gsap.utils.toArray<HTMLDivElement>(
-        ".race-track",
+      //maps - parent
+      //children - SVG Component
+      const mapTrackElem = gsap.utils.toArray<HTMLDivElement>(
+        ".map-track",
         container.current,
       );
 
       //races container ST - horizontal scroll
       racesContainer.forEach((cont, index) => {
+        //get the SVG Line element to animate
+        const SVGInnerLine = mapTrackElem[index].querySelector(
+          ":scope [id*='inner']",
+        );
+        //get the SVG circle element to Animate
+        const SVGCircleElement =
+          mapTrackElem[index].querySelector(":scope circle");
+
+        const SVGOuterLine = mapTrackElem[index].querySelector(
+          ":scope [id*='outer']",
+        );
+
+        gsap.set(SVGOuterLine, { stroke: "#212121" });
+
+        //set the SVG starting point
+        //Animation drawSVG formula : starting point + 100%
+        const startingPoint: number[] = [13, 25, 15, 6, -9];
+        switch (index) {
+          case 0:
+            gsap.set(SVGInnerLine, {
+              drawSVG: `${startingPoint[index]}% ${startingPoint[index]}%`,
+            });
+            break;
+          case 1:
+            gsap.set(SVGInnerLine, {
+              drawSVG: `${startingPoint[index]}% ${startingPoint[index]}%`,
+            });
+            break;
+          case 2:
+            gsap.set(SVGInnerLine, {
+              drawSVG: `${startingPoint[index]}% ${startingPoint[index]}%`,
+            });
+            break;
+          case 3:
+            gsap.set(SVGInnerLine, {
+              drawSVG: `${startingPoint[index]}% ${startingPoint[index]}%`,
+            });
+            break;
+          case 4:
+            gsap.set(SVGInnerLine, {
+              drawSVG: `${startingPoint[index]}% ${startingPoint[index]}%`,
+            });
+        }
+        //each index has its own mapTrackTl and ScrollTrigger
         const heading = cont.querySelector(":scope h2");
-        const raceTrackTl = gsap
+        const mapTrackTl = gsap
           .timeline({ paused: true })
-          .from(raceTrack[index], { rotate: -30, opacity: 0 });
+          .from(mapTrackElem[index], { rotate: -30, opacity: 0 })
+          .from(
+            SVGCircleElement,
+            {
+              duration: 1,
+              scale: 0,
+              ease: "back",
+              transformOrigin: "50% 50%",
+            },
+            "<",
+          )
+          .to(
+            SVGInnerLine,
+            {
+              drawSVG: `${startingPoint[index]}% ${startingPoint[index] + 100}%`,
+              duration: 1.5,
+            },
+            "<",
+          );
+
         ScrollTrigger.create({
           trigger: cont,
           start: `left center`,
@@ -83,9 +166,9 @@ export default function HorizontalScrollPinDemo() {
             opacity: 0.2,
             ease: "back.out",
           }),
-          scrub: 1,
+          scrub: 0.5,
           onToggle: (self) => {
-            return self.isActive ? raceTrackTl.play() : raceTrackTl.pause(0);
+            return self.isActive ? mapTrackTl.play() : mapTrackTl.pause(0);
           },
           containerAnimation: textTween,
         });
@@ -105,27 +188,26 @@ export default function HorizontalScrollPinDemo() {
         <div className="races-country">
           <h3 className="text-5xl text-white font-bold">Race Tracks:</h3>
           <div className="races w-fit flex flex-row gap-100">
-            {races.map((race, index) => {
+            {racesName.map((race, index) => {
               return (
                 // 200 x-padding to reach the scroll trigger of the last child element
                 // or maka the names long
                 <div key={index} className="races-container px-200">
-                  <h2 className="text-[clamp(100px,30vh,30vh)] font-bold text-red-600">
+                  <h2 className="text-[clamp(100px,20vh,20vh)] font-bold text-red-600">
                     {race}
-                    {/* myrat */}
                   </h2>
                 </div>
               );
             })}
           </div>
-          <div className="race-track-wrapper h-50 w-full outline-1 outline-red-400 flex flex-row justify-center gap-10 relative">
-            {races.map((race, index) => {
+          <div className="map-track-wrapper h-[20vw] w-full flex flex-row justify-center gap-10 relative">
+            {mapTrack.map((TrackSVGComponent, index) => {
               return (
                 <div
                   key={index}
-                  className="race-track h-50 w-50 bg-blue-500 rounded-2xl text-2xl text-white flex flex-col justify-center items-center absolute"
+                  className="map-track h-[20vw] w-[20vw] rounded-2xl text-2xl text-white flex flex-col justify-center items-center absolute"
                 >
-                  {race}
+                  <TrackSVGComponent />
                 </div>
               );
             })}
