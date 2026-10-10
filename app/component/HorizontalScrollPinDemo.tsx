@@ -45,7 +45,13 @@ export default function HorizontalScrollPinDemo() {
 
       function getAmountToScroll(): number {
         if (!races) return 0;
-        return races.scrollWidth - window.innerWidth;
+
+        //fixed code: calculates the center distance of last element to scrollable center
+        const lastItem = races.lastElementChild as HTMLElement;
+        const lastItemOffsetLeft = lastItem.offsetLeft;
+        const centerOffset = window.innerWidth / 2 - lastItem.offsetWidth / 2;
+        // return races.scrollWidth - window.innerWidth - padding;
+        return lastItemOffsetLeft - centerOffset;
       }
 
       //.races - vertical scroll animation
@@ -70,7 +76,7 @@ export default function HorizontalScrollPinDemo() {
         animation: textTween,
         start: "top 20%",
         // end: () => `+=${getAmountToScroll()}`,
-        invalidateOnRefresh: true,
+        // invalidateOnRefresh: true,
         pin: true,
         scrub: 0.5,
         markers: true,
@@ -136,7 +142,8 @@ export default function HorizontalScrollPinDemo() {
         const heading = cont.querySelector(":scope h2");
         const mapTrackTl = gsap
           .timeline({ paused: true })
-          .from(mapTrackElem[index], { rotate: -30, opacity: 0 })
+          .from(mapTrackElem[index], { rotate: -30 })
+          .from(mapTrackElem[index], { opacity: 0 }, "<")
           .from(
             SVGCircleElement,
             {
@@ -151,7 +158,7 @@ export default function HorizontalScrollPinDemo() {
             SVGInnerLine,
             {
               drawSVG: `${startingPoint[index]}% ${startingPoint[index] + 100}%`,
-              duration: 1.5,
+              duration: 1,
             },
             "<",
           );
@@ -187,12 +194,10 @@ export default function HorizontalScrollPinDemo() {
       <div ref={container} className="wrapper w-full bg-black">
         <div className="races-country">
           <h3 className="text-5xl text-white font-bold">Race Tracks:</h3>
-          <div className="races w-fit flex flex-row gap-100">
+          <div className="races w-full flex flex-row gap-50">
             {racesName.map((race, index) => {
               return (
-                // 200 x-padding to reach the scroll trigger of the last child element
-                // or maka the names long
-                <div key={index} className="races-container px-200">
+                <div key={index} className="races-container gap-0 px-50">
                   <h2 className="text-[clamp(100px,20vh,20vh)] font-bold text-red-600">
                     {race}
                   </h2>
@@ -205,7 +210,7 @@ export default function HorizontalScrollPinDemo() {
               return (
                 <div
                   key={index}
-                  className="map-track h-[20vw] w-[20vw] rounded-2xl text-2xl text-white flex flex-col justify-center items-center absolute"
+                  className="map-track h-[30vh] w-[30vh] rounded-2xl text-2xl text-white flex flex-col justify-center items-center absolute"
                 >
                   <TrackSVGComponent />
                 </div>
