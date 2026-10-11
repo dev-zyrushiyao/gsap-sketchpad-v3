@@ -36,7 +36,7 @@ export default function LayeredPinningReverse() {
           pin: true,
           start: "top top",
           end: "+=5000",
-          markers: true,
+          // markers: true,
         },
       });
 

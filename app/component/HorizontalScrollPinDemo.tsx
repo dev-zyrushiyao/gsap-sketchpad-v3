@@ -79,7 +79,7 @@ export default function HorizontalScrollPinDemo() {
         // invalidateOnRefresh: true,
         pin: true,
         scrub: 0.5,
-        markers: true,
+        // markers: true,
       });
 
       //races container animation
@@ -163,11 +163,12 @@ export default function HorizontalScrollPinDemo() {
             "<",
           );
 
+        //horizontal scroll to animate the SVG Map Tracks
         ScrollTrigger.create({
           trigger: cont,
           start: `left center`,
           end: "right center",
-          markers: true,
+          // markers: true,
           animation: gsap.from(heading, {
             scale: 0.2,
             opacity: 0.2,

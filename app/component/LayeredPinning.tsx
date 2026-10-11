@@ -34,7 +34,7 @@ export default function LayeredPinning() {
           start: "top top",
           end: "+=2000",
           pinSpacing: false,
-          markers: true,
+          // markers: true,
         });
       });
     },

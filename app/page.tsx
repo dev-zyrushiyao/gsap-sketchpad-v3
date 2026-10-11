@@ -31,6 +31,8 @@ import BallSVGScroll from "./component/BallSVGScroll";
 import ResponsiveScroll from "./component/ResponsiveScroll";
 import SplitScreenPinningDemo from "./component/SplitScreenPinningDemo";
 import HorizontalScrollPinDemo from "./component/HorizontalScrollPinDemo";
+import Rotating3DText from "./component/Rotating3DText";
+import WordHighlight from "./component/WordHighlight";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,38 +63,41 @@ export default function Home() {
 
   return (
     <div ref={container}>
-      {/* <PinSpacingDemo />
+      <PinSpacingDemo />
       <BlankDiv />
       <ParallaxDemo />
       <BlankDiv />
-      <MultiSectionScroll />*/}
-      {/* <LocomotiveScrollDemo />?? */}
+      <MultiSectionScroll />
+      {/* <LocomotiveScrollDemo /> */}
       {/* <ScrollIntro /> */}
-      {/* <BlankDiv /> */}
-      {/* <SectionDemo /> */}
-      {/* <BlankDiv /> */}
-      {/* <ColorNav /> */}
-      {/* <ProgressBarDemo /> */}
-      {/* <ScrollToDemo /> */}
-      {/* <ScrollLabel /> */}
-      {/* <BlankDiv /> */}
-      {/* <SplitTextScroll /> */}
-      {/* <BlankDiv /> */}
-      {/* <OffScreenResetDemo /> */}
-      {/* <BlankDiv /> */}
-      {/* <SpinningCube /> */}
-      {/* <MultiSpinningCube /> */}
-      {/* <BlankDiv /> */}
-      {/* <LineSectionProggress /> */}
-      {/* <HorizontalScrollDemo /> */}
-      {/* <LayeredPinning /> */}
-      {/* <LayeredPinningReverse /> */}
-      {/* <OceanSVGScrollDemo /> */}
-      {/* <VideoScroll /> */}
-      {/* <BallSVGScroll /> */}
-      {/* <ResponsiveScroll /> */}
-      {/* <SplitScreenPinningDemo /> */}
+      <BlankDiv />
+      <SectionDemo />
+      <BlankDiv />
+      <ColorNav />
+      <ProgressBarDemo />
+      <ScrollToDemo />
+      <ScrollLabel />
+      <BlankDiv />
+      <SplitTextScroll />
+      <BlankDiv />
+      <OffScreenResetDemo />
+      <BlankDiv />
+      <SpinningCube />
+      <MultiSpinningCube />
+      <BlankDiv />
+      <LineSectionProggress />
+      <HorizontalScrollDemo />
+      <LayeredPinning />
+      <LayeredPinningReverse />
+      <OceanSVGScrollDemo />
+      <VideoScroll />
+      <BallSVGScroll />
+      <ResponsiveScroll />
+      <SplitScreenPinningDemo />
       <HorizontalScrollPinDemo />
+      <Rotating3DText />
+      <WordHighlight />
+      <SplitScreenPinningDemo />
     </div>
   );
 }

@@ -76,7 +76,7 @@ export default function BallSVGScroll() {
         animation: masterTl,
         scrub: 1,
         start: "top 300px",
-        markers: true,
+        // markers: true,
       });
 
       //   GSDevTools.create({ animation: masterTl });

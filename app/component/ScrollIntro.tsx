@@ -123,14 +123,14 @@ export default function ScrollIntro() {
         ScrollTrigger.create({
           trigger: hero,
           animation: messageTl,
-          markers: true,
+          // markers: true,
           pin: true,
           scrub: 1,
           start: "top top",
           // end: "+=3000px",
         });
 
-        ScrollTrigger.refresh()
+        ScrollTrigger.refresh();
 
         gsap.set(contentWrapper, { autoAlpha: 1 });
       }

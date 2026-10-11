@@ -124,7 +124,7 @@ export default function ResponsiveScroll() {
             ScrollTrigger.create({
               trigger: contentItems[index],
               start: "top 80%",
-              markers: true,
+              // markers: true,
               onEnter: () => {
                 animation.play();
               },

@@ -22,7 +22,7 @@ export default function VideoScroll() {
         onEnterBack: () => video.play(),
         onLeaveBack: () => video.pause(),
 
-        markers: true,
+        // markers: true,
       });
     },
     { scope: container },

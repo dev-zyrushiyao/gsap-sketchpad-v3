@@ -106,7 +106,6 @@ export default function MultiSectionScroll() {
                   src={image.imageData}
                   alt={image.title}
                   className="w-full h-full object-cover"
-             
                 />
                 <div className="relative -top-70 text-white font-bold flex flex-col gap-5 p-20">
                   <h2 className="lg:text-7xl md:text-5xl sm:text-3xl">
