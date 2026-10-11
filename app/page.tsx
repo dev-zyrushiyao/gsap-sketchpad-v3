@@ -97,7 +97,6 @@ export default function Home() {
       <HorizontalScrollPinDemo />
       <Rotating3DText />
       <WordHighlight />
-      <SplitScreenPinningDemo />
     </div>
   );
 }
